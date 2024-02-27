@@ -46,7 +46,7 @@ btn && btn.addEventListener('click', function(e) {
     }
 })
 
-const API = "https://auth-rg69.onrender.com/api/products"
+const API = `https://auth-rg69.onrender.com/api/products`
 
 document.addEventListener('DOMContentLoaded', function() {
     fetch(`${API}/all`, {
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.length) {
                 data.forEach((phone, index) => {
-                    let row = createRow(phone, index + 1)
+                    let row = createRow(phone, index + 1);
                     tbody.innerHTML += row;
                 });
 
@@ -72,13 +72,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             let isDelete = confirm('Are you gonna delete this information')
                             if (isDelete) {
                                 let id = this.parentNode.getAttribute('data-id');
-                                console.log(id);
                                 if (id) {
                                     fetch(`${API}/${id}`, {
                                         method: "DELETE"
                                     })
                                     .then(res => res.json())
-                                    .then(data => {
+                                    .then(data => { 
                                         console.log(data);
                                         if (data.message == "Mahsulot muvaffaqiyatli o'chirildi") {
                                             window.location.reload();
