@@ -33,7 +33,7 @@ btn && btn.addEventListener('click', function(e) {
         })
             .then(res => res.json())
             .then(data => {
-                btn.removeAttribute('disabled')
+                btn.removeAttribute('disabled');
                 btn.innerHTML = 'Save'
                 if (data.id) {
                     let row = createRow(data, tbody.childElementCount + 1);
@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             let isDelete = confirm('Are you gonna delete this information')
                             if (isDelete) {
                                 let id = this.parentNode.getAttribute('data-id');
+                                console.log(id);
                                 if (id) {
                                     fetch(`${API}/${id}`, {
                                         method: "DELETE"
@@ -97,5 +98,4 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(err => {
             console.log(err);
         })
-})
-
+});
